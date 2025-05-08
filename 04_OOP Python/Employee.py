@@ -32,6 +32,39 @@ class Employee:
             return False
         return True
 
+#Method Resolution order
+class Developer(Employee):
+    raise_amount = 1.10
+    def __init__(self,first,last,pay,prog_lang):
+        super().__init__(first,last,pay)
+        self.prog_lang=prog_lang
+
+class Manager(Employee):
+    def __init__(self,first,last,pay,employees=None):
+        super().__init__(first,last,pay)
+        if employees is None:
+            self.employees=[]
+        else:
+            self.employees= employees
+
+    def add_emp(self, emp):
+        if emp not in self.employees:
+            self.employees.append(emp)
+    def remove_emp(self, emp):
+        if emp in self.employees:
+            self.employees.remove(emp)
+
+    def print_emps(self):
+        for emp in self.employees:
+            print('-->',emp.fullname())
+
+
+
+
+
+
+
+
 
 emp_1=Employee('Benir','Odeny',60000)
 emp_2=Employee('Test','User',50000)
@@ -49,5 +82,17 @@ emp_4_str="Alisson-Becker-60000"
 
 print(Employee.is_workday(my_date))
 
+dev_1=Developer('Merlin','Haven',379400,'Python')
+dev_2=Developer('Jayesh','Menariya',57300,'Java')
+print(dev_1.email)
+print(dev_1.prog_lang)
+print(dev_1.pay)
 
+mgr_1=Manager('Reyna','Giovanni',900000,[dev_1])
+print(mgr_1.email)
+mgr_1.add_emp(dev_2)
+mgr_1.print_emps()
+#--> is instance
+print(isinstance(mgr_1, Manager))
+print(issubclass(Developer,Employee))
 
