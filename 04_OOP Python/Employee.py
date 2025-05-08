@@ -31,6 +31,16 @@ class Employee:
         if day.weekday()==5 or day.weekday()==6:
             return False
         return True
+    def __repr__(self):
+        return "Employee('{}','{}','{}')".format(self.first,self.last,self.pay)
+    def __str__(self):
+        return '{}-->{}'.format(self.fullname(),self.email)
+    def __add__(self, other):
+        return self.pay +other.pay
+    def __len__(self):
+        return len(self.fullname())
+
+# What is a dunder method
 
 #Method Resolution order
 class Developer(Employee):
@@ -95,4 +105,8 @@ mgr_1.print_emps()
 #--> is instance
 print(isinstance(mgr_1, Manager))
 print(issubclass(Developer,Employee))
-
+print(emp_1)
+# Question-> What if we want to create a method that adds the salaries of all employees
+# all together?
+print(emp_1+emp_2)
+print(len(emp_1))
