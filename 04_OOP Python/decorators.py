@@ -31,5 +31,6 @@ emp_5.fullname='Corey Shafer'
 print(emp_5.first)
 print(emp_5.email)
 print(emp_5.fullname)
+print("Initial commit")
 
 del emp_5.fullname
